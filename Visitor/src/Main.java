@@ -15,6 +15,8 @@ public class Main {
         Triangulo triangulo = new Triangulo(3,3,3);
         Trapezio trapezio = new Trapezio(5, 10, 6);
 
+        Fachada fachada = new Fachada();
+
         System.out.println("A área do círculo é: " + visitorCA.visitaCirculo(circulo));
         System.out.println("O perimetro do círculo é: " + visitorCP.visitaCirculo(circulo));
         visitorCD.visitaCirculo(circulo);
@@ -40,6 +42,13 @@ public class Main {
         System.out.println("O perimetro do trapezio é: " + visitorCP.visitaTrapezio(trapezio));
         visitorCD.visitaTrapezio(trapezio);
         visitorM.visitaTrapezio(trapezio);
+
+        System.out.println("-------------------------------------------------------------");
+
+        fachada.informacoesCirculo(15);
+        fachada.informacoesRetangulo(5,4);
+        fachada.informacoesTriangulo(3,3,3);
+        fachada.informacoesTrapezio(5,10, 6);
 
     }
 }
