@@ -1,9 +1,10 @@
 import Figuras.*;
 import Interfaces.VisitorIF;
 import Visitor.*;
+import excecoes.TrianguloNaoExisteException;
 import excecoes.ValorMenorOuIgualAZeroException;
 
-public class Fachada {
+public class processaFiguras {
     VisitorIF visitorCA = new visitorCalculaArea();
     VisitorIF visitorCP = new visitorCalculaPerimetro();
     VisitorIF visitorCD = new visitorDesenha();
@@ -25,7 +26,7 @@ public class Fachada {
         visitorM.visitaRetangulo(retangulo);
     }
 
-    public void informacoesTriangulo(double lado1, double lado2, double lado3) throws ValorMenorOuIgualAZeroException {
+    public void informacoesTriangulo(double lado1, double lado2, double lado3) throws ValorMenorOuIgualAZeroException, TrianguloNaoExisteException {
         Triangulo triangulo = new Triangulo(lado1, lado2, lado3);
         System.out.println("A área do triangulo é: " + visitorCA.visitaTriangulo(triangulo));
         System.out.println("O perimetro do triangulo é: " + visitorCP.visitaTriangulo(triangulo));

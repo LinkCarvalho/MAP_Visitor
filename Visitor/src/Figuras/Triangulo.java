@@ -2,6 +2,7 @@ package Figuras;
 
 import Interfaces.ElementoConcretoIF;
 import Interfaces.VisitorIF;
+import excecoes.TrianguloNaoExisteException;
 import excecoes.ValorMenorOuIgualAZeroException;
 
 public class Triangulo implements ElementoConcretoIF {
@@ -9,13 +10,16 @@ public class Triangulo implements ElementoConcretoIF {
     private double lado2;
     private double lado3;
 
-    public Triangulo(double lado1, double lado2, double lado3) throws ValorMenorOuIgualAZeroException{
+    public Triangulo(double lado1, double lado2, double lado3) throws ValorMenorOuIgualAZeroException, TrianguloNaoExisteException {
         if(lado1 <= 0 || lado2 <= 0 || lado3 <= 0){
             throw new ValorMenorOuIgualAZeroException();
         }
         this.lado1 = lado1;
         this.lado2 = lado2;
         this.lado3 = lado3;
+        if(!existe()){
+            throw new TrianguloNaoExisteException();
+        }
     }
 
     public boolean existe() {
@@ -48,11 +52,8 @@ public class Triangulo implements ElementoConcretoIF {
 
     @Override
     public void aceitaVisita(VisitorIF v) {
-        if (existe()) {
             v.visitaTriangulo(this);
-        } else {
-            System.out.println("Os lados fornecidos não formam um triângulo válido.");
-        }
+
     }
 
 
